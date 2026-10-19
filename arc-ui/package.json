@@ -1,0 +1,63 @@
+{
+  "name": "arc-ui",
+  "version": "2.0.0",
+  "description": "ARC System Audio Host – Electron UI",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "build:win": "npm run build && electron-builder --win --x64",
+    "rebuild": "electron-rebuild -f -w shm_reader",
+    "postinstall": "electron-rebuild -f -w shm_reader"
+  },
+  "dependencies": {
+    "@tanstack/react-virtual": "^3.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@electron-toolkit/eslint-config-ts": "^2.0.0",
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
+    "electron-rebuild": "^3.2.9",
+    "electron-vite": "^2.3.0",
+    "node-addon-api": "^8.1.0",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.3"
+  },
+  "build": {
+    "appId": "com.arcaudio.system-host",
+    "productName": "ARC System Audio Host",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "resources/icon.ico"
+    },
+    "files": [
+      "out/**/*",
+      "native/build/**/*",
+      "resources/**/*"
+    ],
+    "nativeRebuilder": "sequential"
+  }
+}

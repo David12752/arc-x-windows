@@ -1,0 +1,34 @@
+# Resources Directory
+
+This directory contains application resources such as:
+
+- icon.png - Application icon (32x32 and larger)
+- splash.png - Splash screen image (optional)
+- presets/ - Factory presets (optional)
+
+## Icon Requirements
+
+The application icon should be provided in the following formats:
+- icon.png (256x256 recommended for high-DPI displays)
+- icon.ico (Windows icon with multiple resolutions)
+
+## Creating an Icon
+
+You can create a simple icon using any image editor. For the ARC theme:
+- Background: Dark (#0D0D14)
+- Accent: Teal (#00D4AA)
+- Consider a waveform or audio-related symbol
+
+## Binary Data
+
+JUCE will convert resources to BinaryData.cpp during the build process.
+To include resources in the build, add them to the CMakeLists.txt:
+
+```cmake
+juce_add_binary_data(ARCResources SOURCES
+    resources/icon.png
+    resources/splash.png
+)
+target_link_libraries(ARCSystemAudioHost PRIVATE ARCResources)
+```
+
